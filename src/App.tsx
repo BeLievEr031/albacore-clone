@@ -2,8 +2,10 @@ import { useState } from "react"
 import ContactForm from "./components/ContactForm"
 import LogoImg from "./assets/image.png"
 import Footer from "./components/Footer"
+import Video from "./components/Video"
 function App() {
   const [open, setOpen] = useState(false)
+  const [video, setVideo] = useState(false)
   return (
     <main className="bg-[#0f0f10] px-4 pt-16">
       <h1 className="font-jetbrains text-white text-center text-lg">
@@ -28,7 +30,9 @@ function App() {
           </div>
         </button>
         <button className="relative border-[1px] border-white text-white font-jetbrains uppercase px-3 py-1.5 group hover:text-black transition-all cursor-pointer">
-          <p className="relative z-10 flex gap-2 items-center">Watch video
+          <p className="relative z-10 flex gap-2 items-center"
+            onClick={() => setVideo(true)}
+          >Watch video
 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-move-up-right-icon lucide-move-up-right group-hover:rotate-45 transition-all"><path d="M13 5H19V11" /><path d="M19 5L5 19" /></svg>
           </p>
@@ -54,6 +58,8 @@ function App() {
       {open && <ContactForm setOpen={setOpen} />}
 
       <Footer />
+
+      {video && <Video setOpen={setVideo} />}
     </main>
   )
 }
